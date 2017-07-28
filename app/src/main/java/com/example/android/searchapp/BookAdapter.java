@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
+
 /**
  * Create a special adapter for Book Class.
  */
@@ -32,15 +33,9 @@ class BookAdapter extends ArrayAdapter<Book> {
         assert currentBook != null;
         title.setText(currentBook.getmTitle());
 
-        ArrayList<String> authors = currentBook.getmAuthor();
-        String authorNames = "";
-        for (int i = 0; i < authors.size(); i++){
-            authorNames = authorNames + '\n' + authors.get(i);
-        }
-        TextView authorView = (TextView) convertView.findViewById(R.id.authors);
-        authorView.setText(authorNames);
-
         ImageView imageView = (ImageView) convertView.findViewById(R.id.image);
+        String imageResourceString = currentBook.getmImageUrl();
+        new ImageLoader(imageResourceString,imageView).execute();
 
         return convertView;
     }

@@ -1,8 +1,6 @@
 package com.example.android.searchapp;
 
 import android.app.Activity;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -11,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -20,9 +17,6 @@ public class MainActivity extends Activity{
     /** Tag  for log messages **/
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    private String title, author;
-
-    private final String bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
 
     /** Adapter for the list of books**/
     private BookAdapter adapter;
@@ -68,8 +62,9 @@ public class MainActivity extends Activity{
         String bookTitle = intent.getStringExtra(SearchActivity.EXTRA_BOOK);
         String authorName = intent.getStringExtra(SearchActivity.EXTRA_AUTHOR);
 
-        title = changeQuery(bookTitle);
-        author = changeQuery(authorName);
+        String title = changeQuery(bookTitle);
+        String author = changeQuery(authorName);
+        String bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
 
         // Start the Async task now
         BookAsyncTask task = new BookAsyncTask();

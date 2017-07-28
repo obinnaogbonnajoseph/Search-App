@@ -1,7 +1,6 @@
 package com.example.android.searchapp;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -19,14 +18,13 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 
 /**
  * Helper methods related to requesting and receiving data from Google Books
  */
 
-public class QueryUtils {
+class QueryUtils {
     /**
      * Tag for the log messaages
      */
@@ -37,7 +35,7 @@ public class QueryUtils {
      * @param requestUrl is the URL string
      * @return a list of Book(s)
      */
-    public static ArrayList<Book> fetchBookData(String requestUrl) {
+    static ArrayList<Book> fetchBookData(String requestUrl) {
 
         Log.i(LOG_TAG,"TEST: fetchBookData() called ...");
         // Create URL object
@@ -137,14 +135,6 @@ public class QueryUtils {
 
     }
 
-    private Bitmap getImage(URL imageUrl){
-        try{
-            Bitmap bitmap = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
-        } catch (IOException e){
-            Log.e(LOG_TAG,"Problem retrieving the image Resource",e);
-        }
-    }
-
 
     /**
      * Return a list of Book objects that has been built up from
@@ -169,20 +159,14 @@ public class QueryUtils {
 
                 String title = volumeInfo.getString("title");
                 Log.i(LOG_TAG,"title of book: "+title);
+
                 String url = volumeInfo.getString("infoLink");
                 Log.i(LOG_TAG,"url of book: "+url);
-                JSONArray getAuthor = volumeInfo.getJSONArray("authors");
-                ArrayList<String> authors = new ArrayList<>();
-                for (int j = 0; j < getAuthor.length(); j++){
-                    authors.add(getAuthor.getString(j));
-                    Log.i(LOG_TAG,"current author"+getAuthor.getString(j));
-                }
+
                 JSONObject getImageLinks = volumeInfo.getJSONObject("imageLinks");
                 String imageUrl = getImageLinks.getString("thumbnail");
-                URL imageResourceUrl = createUrl(imageUrl);
-                Bitmap bmp = getImage(imageResourceUrl);
 
-                Book book = new Book(title,authors,url,imageUrl);
+                Book book = new Book(title,url,imageUrl);
                 books.add(book);
             }
         } catch (JSONException e) {

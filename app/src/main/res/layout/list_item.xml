@@ -6,8 +6,6 @@
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:paddingEnd="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:paddingStart="16dp">
 
     <ImageView
@@ -20,24 +18,14 @@
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:paddingLeft="16dp"
+        android:layout_marginStart="8dp"
         android:gravity="center_vertical"
-        android:layout_height="match_parent"
-        android:ellipsize="end"
         android:maxLines="2"
-        android:textColor="@color/textColorTitle"
-        android:textSize="16sp"
-        tools:text="Long placeholder location that should wrap to more
-than two lines of text"/>
-
-    <TextView
-        android:id="@+id/authors"
-        android:layout_width="wrap_content"
+        android:ellipsize="end"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:gravity="center"
-        android:textColor="@color/textColorAuthors"
-        android:textSize="12sp"
-        tools:text="Mary Higgins Clark"/>
+        android:textColor="@color/textColorTitle"
+        android:textSize="22sp"
+        tools:text="Purple Hibiscus"/>
+
 
 </LinearLayout>
