@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tanBackground">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="@color/textColorAuthors">
+
+        <EditText
+            android:id="@+id/search_book"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:background="#ffffff"
+            android:layout_margin="8dp"
+            android:ellipsize="end"
+            android:hint="@string/search_book"
+            android:inputType="textShortMessage" />
+
+        <EditText
+            android:id="@+id/search_author"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:background="#ffffff"
+            android:layout_margin="8dp"
+            android:ellipsize="end"
+            android:hint="@string/search_author"
+            android:inputType="textShortMessage" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/search_button"
+            android:onClick="submitSearch"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorPrimary"/>
+    </LinearLayout>
+
+</RelativeLayout>
