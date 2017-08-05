@@ -14,16 +14,15 @@ import java.net.URL;
  * Loads image from URL and updates an imageView
  */
 
-class ImageLoader extends AsyncTask<Void,Void, Bitmap> {
+class ImageLoader extends AsyncTask<Void, Void, Bitmap> {
 
     private String mUrl;
     private ImageView mImageView;
     private static final String LOG_TAG = ImageLoader.class.getSimpleName();
 
-
-    ImageLoader(String url, ImageView imageView) {
-        this.mUrl = url;
-        this.mImageView = imageView;
+    ImageLoader(String url, ImageView imageView){
+        mUrl = url;
+        mImageView = imageView;
     }
 
     @Override
@@ -44,7 +43,6 @@ class ImageLoader extends AsyncTask<Void,Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        super.onPostExecute(bitmap);
         mImageView.setImageBitmap(bitmap);
     }
 }
